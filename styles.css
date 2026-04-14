@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.game-container {
+  text-align: center;
+}
+
+.game-title {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 107, 107, 0.8),
+               0 0 20px rgba(255, 107, 107, 0.6),
+               0 0 30px rgba(255, 107, 107, 0.4);
+  letter-spacing: 4px;
+}
+
+#gameCanvas {
+  border: 4px solid #FF6B6B;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 107, 107, 0.5),
+              0 10px 40px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  background: #87CEEB;
+}
+
+.controls-info {
+  margin-top: 20px;
+  color: #a0a0a0;
+  font-size: 1rem;
+}
+
+.controls-info p {
+  margin: 5px 0;
+}
+
+.controls-info .hint {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.voice-status {
+  margin-top: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #666;
+  transition: all 0.3s ease;
+}
+
+.status-dot.active {
+  background: #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.status-text {
+  transition: all 0.3s ease;
+}
+
+/* 响应式调整 */
+@media (max-width: 850px) {
+  #gameCanvas {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+  }
+
+  .game-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* 动画效果 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.voice-status .status-dot {
+  animation: pulse 2s infinite;
+}
+
+.voice-status .status-dot.active {
+  animation: none;
+}

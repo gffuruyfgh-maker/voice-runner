@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>语音跑酷 - Voice Runner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1 class="game-title">语音跑酷</h1>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <div class="controls-info">
+      <p>🎤 对着麦克风说话，声音越大跳得越高！</p>
+      <p class="hint">（也可以点击屏幕跳跃）</p>
+    </div>
+    <div id="voiceStatus" class="voice-status">
+      <span class="status-dot"></span>
+      <span class="status-text">点击开始游戏以启用麦克风</span>
+    </div>
+  </div>
+
+  <script src="constants.js"></script>
+  <script src="voice-input.js"></script>
+  <script src="player.js"></script>
+  <script src="scene.js"></script>
+  <script src="renderer.js"></script>
+  <script src="game.js"></script>
+  <script>
+    // 页面加载完成后初始化游戏
+    window.addEventListener('load', async () => {
+      const canvas = document.getElementById('gameCanvas');
+      const game = new Game(canvas);
+      const voiceStatus = document.getElementById('voiceStatus');
+
+      // 更新语音状态显示
+      const updateVoiceStatus = () => {
+        if (game.isVoiceInitialized) {
+          voiceStatus.querySelector('.status-dot').classList.add('active');
+          voiceStatus.querySelector('.status-text').textContent = '麦克风已启用';
+        }
+      };
+
+      // 点击画布时更新状态
+      canvas.addEventListener('click', () => {
+        setTimeout(updateVoiceStatus, 500);
+      });
+
+      await game.init();
+      updateVoiceStatus();
+    });
+  </script>
+</body>
+</html>
