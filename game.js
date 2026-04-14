@@ -85,12 +85,12 @@ class Game {
       this.player.jump(force);
       this.canJump = false;
 
-      // 跳跃冷却，防止连续触发
+      // 跳跃冷却，防止连续触发和落地时二次跳跃
       this.jumpCooldown = true;
       setTimeout(() => {
         this.canJump = true;
         this.jumpCooldown = false;
-      }, 100); // 缩短冷却时间提高响应
+      }, 200); // 200ms冷却时间足够防止落地时额外跳跃
     }
   }
 

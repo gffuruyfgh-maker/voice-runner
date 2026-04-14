@@ -30,8 +30,8 @@ const CONFIG = {
     MAX_WIDTH: 250,
     MIN_HEIGHT: 20,
     MAX_HEIGHT: 30,
-    MIN_Y: 200,
-    MAX_Y: 340,
+    MIN_Y: 280,  // 最低平台高度（更容易跳）
+    MAX_Y: 310,  // 最高平台高度（60%音量能跳上去）
     GAP_MIN: 150,
     GAP_MAX: 300,
     SPAWN_DISTANCE: 800, // 距离玩家多少时触发生成
